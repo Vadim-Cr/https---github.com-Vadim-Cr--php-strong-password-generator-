@@ -60,11 +60,30 @@
             <input type="reset" value="Annulla">
 
         </form>
+
+        
     </div>
 
     <?php
-echo "la password sarà lunga " . $_GET["lunghezza_password"] . " parole<br>";
-    ?>
+// echo "la password sarà lunga " . $_GET["lunghezza_password"] . " parole<br>";
 
+$n=$_GET["lunghezza_password"];
+function getPassword($n) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+ 
+    for ($i = 0; $i < $n; $i++) {
+        $index = rand(0, strlen($characters)-1);
+        $randomString .= $characters[$index];
+    }
+ 
+    return $randomString;
+}
+ 
+// echo getPassword($n);
+    ?>
+<div class="h1 bg-success text-light p-3">
+            LA TUA PASSWORD E' <?php echo getPassword($n)?>;
+        </div>
 </body>
 </html>
